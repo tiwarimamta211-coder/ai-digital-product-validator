@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Digital Product Validator | IncomeAIHub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+<style>
+:root{
+  --cyan:#00fff2; --purple:#b026ff; --green:#39ff14; --pink:#ff2e88;
+  --bg0:#05060a; --bg1:#0a0d16; --bg2:#0f1420; --card:#0d1119;
+  --border:rgba(0,255,242,0.25); --text:#dbeeff; --muted:#7c8aa5;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  background:var(--bg0);
+  color:var(--text);
+  font-family:'Rajdhani',sans-serif;
+  min-height:100vh;
+  position:relative;
+  overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:1;
+  background-image:linear-gradient(rgba(0,255,242,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,242,0.04) 1px,transparent 1px);
+  background-size:34px 34px;
+}
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:2;
+  background:repeating-linear-gradient(0deg,rgba(0,0,0,0.15) 0px,rgba(0,0,0,0.15) 1px,transparent 1px,transparent 3px);
+  opacity:0.35;
+}
+.wrap{position:relative;z-index:3;max-width:980px;margin:0 auto;padding:22px 16px 60px;}
+header{text-align:center;margin-bottom:22px;}
+h1{
+  font-family:'Orbitron',sans-serif;font-weight:900;
+  font-size:clamp(24px,5vw,40px);
+  background:linear-gradient(90deg,var(--cyan),var(--purple),var(--green));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  letter-spacing:1px;
+  text-shadow:0 0 40px rgba(0,255,242,0.25);
+}
+.tagline{color:var(--muted);font-size:15px;margin-top:8px;letter-spacing:0.5px;}
+.ad-slot{
+  border:1px dashed rgba(124,138,165,0.4);
+  border-radius:10px;padding:10px;text-align:center;
+  color:var(--muted);font-size:11px;font-family:'Share Tech Mono',monospace;
+  margin:18px 0;background:rgba(255,255,255,0.02);
+}
+.card{
+  background:linear-gradient(180deg,var(--card),var(--bg2));
+  border:1px solid var(--border);
+  border-radius:16px;padding:20px;margin-bottom:20px;
+  box-shadow:0 0 25px rgba(0,255,242,0.05), inset 0 0 40px rgba(176,38,255,0.02);
+  position:relative;
+}
+.card::before{
+  content:'';position:absolute;top:0;left:18px;right:18px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--cyan),transparent);
+}
+.card h2{
+  font-family:'Orbitron',sans-serif;font-size:16px;color:var(--cyan);
+  margin-bottom:14px;letter-spacing:1px;display:flex;align-items:center;gap:8px;
+}
+label{display:block;font-size:13px;color:var(--muted);margin:12px 0 6px;letter-spacing:0.5px;}
+label:first-child{margin-top:0;}
+input[type=text],input[type=number],select,textarea{
+  width:100%;background:var(--bg1);border:1px solid rgba(124,138,165,0.3);
+  border-radius:8px;color:var(--text);padding:11px 12px;font-family:'Rajdhani',sans-serif;
+  font-size:15px;font-weight:500;outline:none;transition:.2s;
+}
+input:focus,select:focus,textarea:focus{border-color:var(--cyan);box-shadow:0 0 12px rgba(0,255,242,0.2);}
+textarea{resize:vertical;min-height:70px;}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:640px){.row2{grid-template-columns:1fr;}}
+.btn{
+  font-family:'Orbitron',sans-serif;font-weight:700;font-size:14px;
+  border:none;border-radius:10px;padding:14px 20px;cursor:pointer;
+  letter-spacing:1px;transition:.2s;width:100%;margin-top:18px;
+}
+.btn-primary{
+  background:linear-gradient(90deg,var(--cyan),var(--purple));
+  color:#02040a;box-shadow:0 0 20px rgba(0,255,242,0.35);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 26px rgba(176,38,255,0.4);}
+.btn-secondary{
+  background:transparent;border:1px solid var(--border);color:var(--cyan);
+  width:auto;padding:9px 16px;font-size:12px;margin-top:0;
+}
+.btn-secondary:hover{background:rgba(0,255,242,0.08);}
+.toggle-row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;}
+.switch{position:relative;width:46px;height:24px;flex-shrink:0;}
+.switch input{opacity:0;width:0;height:0;}
+.slider-tg{position:absolute;inset:0;background:#252b3a;border-radius:24px;cursor:pointer;transition:.2s;}
+.slider-tg::before{content:'';position:absolute;width:18px;height:18px;left:3px;top:3px;background:var(--muted);border-radius:50%;transition:.2s;}
+input:checked + .slider-tg{background:rgba(0,255,242,0.25);}
+input:checked + .slider-tg::before{transform:translateX(22px);background:var(--cyan);box-shadow:0 0 8px var(--cyan);}
+.hint{font-size:12px;color:var(--muted);margin-top:6px;}
+
+/* Results */
+#resultsCard{display:none;}
+.verdict-badge{
+  display:inline-block;padding:8px 18px;border-radius:30px;font-family:'Orbitron',sans-serif;
+  font-weight:700;font-size:14px;letter-spacing:1px;margin-bottom:6px;
+}
+.v-strong{background:rgba(57,255,20,0.12);color:var(--green);border:1px solid var(--green);}
+.v-moderate{background:rgba(255,193,7,0.12);color:#ffc107;border:1px solid #ffc107;}
+.v-risk{background:rgba(255,46,136,0.12);color:var(--pink);border:1px solid var(--pink);}
+.score-big{
+  font-family:'Orbitron',sans-serif;font-size:52px;font-weight:900;text-align:center;
+  background:linear-gradient(90deg,var(--cyan),var(--green));-webkit-background-clip:text;
+  background-clip:text;color:transparent;line-height:1;
+}
+.score-sub{text-align:center;color:var(--muted);font-size:13px;margin-bottom:16px;}
+.score-center{text-align:center;padding:8px 0 4px;}
+.bars{display:flex;flex-direction:column;gap:14px;margin-top:16px;}
+.bar-item .bar-label{display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px;color:var(--text);}
+.bar-track{height:10px;background:#1a1f2c;border-radius:6px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:6px;transition:width 0.9s ease;box-shadow:0 0 10px currentColor;}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px;}
+@media(max-width:640px){.grid3{grid-template-columns:1fr;}}
+.stat-box{background:var(--bg1);border:1px solid rgba(124,138,165,0.2);border-radius:10px;padding:14px;text-align:center;}
+.stat-box .val{font-family:'Orbitron',sans-serif;font-size:18px;color:var(--purple);}
+.stat-box .lbl{font-size:11px;color:var(--muted);margin-top:4px;letter-spacing:0.5px;}
+ul.tips{margin-top:10px;padding-left:0;list-style:none;}
+ul.tips li{
+  font-size:14px;padding:9px 0 9px 26px;position:relative;border-bottom:1px solid rgba(124,138,165,0.12);
+}
+ul.tips li:last-child{border-bottom:none;}
+ul.tips li::before{content:'▹';position:absolute;left:4px;color:var(--cyan);}
+.gap-tag{
+  display:inline-block;background:rgba(176,38,255,0.12);border:1px solid rgba(176,38,255,0.4);
+  color:var(--purple);font-size:12px;padding:5px 10px;border-radius:6px;margin:4px 6px 0 0;
+}
+.actions-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;}
+
+/* History */
+.history-item{
+  background:var(--bg1);border:1px solid rgba(124,138,165,0.2);border-radius:10px;
+  padding:12px;margin-bottom:10px;cursor:pointer;transition:.2s;
+}
+.history-item:hover{border-color:var(--cyan);}
+.history-item .h-top{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;}
+.history-item .h-name{font-weight:700;font-size:14px;color:var(--text);}
+.history-item .h-score{font-family:'Orbitron',sans-serif;font-size:14px;}
+.history-item .h-meta{font-size:11px;color:var(--muted);margin-top:4px;font-family:'Share Tech Mono',monospace;}
+.empty-hist{color:var(--muted);font-size:13px;text-align:center;padding:16px 0;}
+
+/* Guide */
+.guide-box{
+  background:rgba(57,255,20,0.04);border:1px solid rgba(57,255,20,0.3);
+  border-radius:12px;padding:16px;font-size:14px;line-height:1.7;
+}
+.guide-box b{color:var(--green);}
+.guide-box .step{margin-bottom:10px;}
+.guide-box .step-num{
+  display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;
+  background:var(--green);color:#02040a;border-radius:50%;font-size:11px;font-weight:700;
+  margin-right:8px;font-family:'Orbitron',sans-serif;
+}
+footer{text-align:center;color:var(--muted);font-size:11px;margin-top:24px;font-family:'Share Tech Mono',monospace;}
+.loader{display:none;text-align:center;padding:20px;color:var(--cyan);font-family:'Share Tech Mono',monospace;font-size:13px;}
+.loader.active{display:block;}
+.dots span{animation:blink 1.4s infinite;}
+.dots span:nth-child(2){animation-delay:.2s;}
+.dots span:nth-child(3){animation-delay:.4s;}
+@keyframes blink{0%,100%{opacity:0.2;}50%{opacity:1;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>⚡ AI DIGITAL PRODUCT VALIDATOR</h1>
+  <p class="tagline">Apna digital product idea launch karne se pehle validate karo — data-backed verdict, 60 seconds mein</p>
+</header>
+
+<div class="ad-slot">Advertisement — Top Slot (ca-pub-XXXXXXXXXXXXXXXX)</div>
+
+<!-- INPUT CARD -->
+<div class="card">
+  <h2>🧪 Enter Your Product Idea</h2>
+
+  <label>Product Name / Idea</label>
+  <input type="text" id="prodName" placeholder="e.g. Notion Template for Freelance Invoicing">
+
+  <div class="row2">
+    <div>
+      <label>Category</label>
+      <select id="category">
+        <option>eBook / Guide</option>
+        <option>Online Course</option>
+        <option>Notion Template</option>
+        <option>Canva Template</option>
+        <option>SaaS Tool / Web App</option>
+        <option>Mobile App</option>
+        <option>Chrome Extension</option>
+        <option>Stock Photos / Graphics / UI Kit</option>
+        <option>Print-on-Demand</option>
+        <option>Digital Planner / Journal</option>
+        <option>AI Prompt Pack</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div>
+      <label>Price Point (₹)</label>
+      <input type="number" id="price" placeholder="e.g. 499" min="0">
+    </div>
+  </div>
+
+  <div class="row2">
+    <div>
+      <label>Target Audience</label>
+      <input type="text" id="audience" placeholder="e.g. Indian freelance designers">
+    </div>
+    <div>
+      <label>Estimated Reach (Followers/Email List/Traffic)</label>
+      <input type="number" id="reach" placeholder="e.g. 5000" min="0">
+    </div>
+  </div>
+
+  <label>What Problem Does It Solve?</label>
+  <textarea id="problem" placeholder="e.g. Freelancers waste hours creating invoices manually and look unprofessional"></textarea>
+
+  <label>Your Unique Angle (What Makes It Different?)</label>
+  <textarea id="unique" placeholder="e.g. Pre-built GST-compliant invoice templates specifically for Indian freelancers"></textarea>
+
+  <div class="card" style="margin-top:16px;margin-bottom:0;padding:14px;background:var(--bg1);">
+    <div class="toggle-row">
+      <div>
+        <div style="font-size:13px;color:var(--text);font-weight:600;">🤖 Use Claude AI Analysis (optional)</div>
+        <div class="hint">Off rehne par built-in rule-based engine kaam karega — koi API key zaroori nahi</div>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="aiToggle">
+        <span class="slider-tg"></span>
+      </label>
+    </div>
+    <div id="apiKeyRow" style="display:none;margin-top:10px;">
+      <label>Claude API Key</label>
+      <input type="text" id="apiKey" placeholder="sk-ant-...">
+      <div class="hint">Key sirf tumhare browser mein store hoti hai, kahin bheji nahi jaati.</div>
+    </div>
+  </div>
+
+  <button class="btn btn-primary" onclick="validateProduct()">🚀 VALIDATE MY PRODUCT IDEA</button>
+  <div class="loader" id="loader">ANALYZING MARKET SIGNALS<span class="dots"><span>.</span><span>.</span><span>.</span></span></div>
+</div>
+
+<div class="ad-slot">Advertisement — Mid Slot (ca-pub-XXXXXXXXXXXXXXXX)</div>
+
+<!-- RESULTS -->
+<div class="card" id="resultsCard">
+  <h2>📊 Validation Report</h2>
+  <div class="score-center">
+    <div id="verdictBadge" class="verdict-badge"></div>
+    <div class="score-big" id="scoreBig">0</div>
+    <div class="score-sub">Overall Validation Score / 100</div>
+  </div>
+
+  <div class="bars" id="barsWrap"></div>
+
+  <div class="grid3" id="statsGrid"></div>
+
+  <h2 style="margin-top:22px;">💡 Improvement Suggestions</h2>
+  <ul class="tips" id="tipsList"></ul>
+
+  <h2 style="margin-top:22px;">🎯 Competitor Gap Opportunities</h2>
+  <div id="gapTags"></div>
+
+  <div class="actions-row">
+    <button class="btn btn-secondary" onclick="copyReport()">📋 Copy Report</button>
+    <button class="btn btn-secondary" onclick="saveToHistory()">💾 Save to History</button>
+    <button class="btn btn-secondary" onclick="window.print()">🖨️ Print / PDF</button>
+  </div>
+</div>
+
+<!-- HISTORY -->
+<div class="card">
+  <h2>🕒 Validation History</h2>
+  <div id="historyList"><div class="empty-hist">Abhi tak koi validation save nahi hui hai.</div></div>
+</div>
+
+<div class="ad-slot">Advertisement — Bottom Slot (ca-pub-XXXXXXXXXXXXXXXX)</div>
+
+<!-- HINDI GUIDE -->
+<div class="card">
+  <h2>📖 Tool Kaise Use Karein (Hindi Guide)</h2>
+  <div class="guide-box">
+    <div class="step"><span class="step-num">1</span><b>Apna idea likho</b> — Product name, category, price aur target audience fill karo.</div>
+    <div class="step"><span class="step-num">2</span><b>Problem & Unique Angle batao</b> — Yeh jitna specific hoga, validation utna accurate hoga.</div>
+    <div class="step"><span class="step-num">3</span><b>Validate button dabao</b> — Tool automatically market demand, competition aur pricing viability check karega.</div>
+    <div class="step"><span class="step-num">4</span><b>Score & Verdict dekho</b> — 70+ score = Strong Potential, 40-69 = Moderate, &lt;40 = High Risk hai, dobara sochna padega.</div>
+    <div class="step"><span class="step-num">5</span><b>Suggestions follow karo</b> — Diye gaye improvement tips se apna idea aur strong bana sakte ho.</div>
+    <div class="step"><span class="step-num">6</span><b>History mein save karo</b> — Multiple ideas compare karne ke liye "Save to History" dabao.</div>
+    <div class="step"><span class="step-num">✨</span><b>Pro Tip:</b> Claude AI toggle ON karke apni API key daalo — deeper, personalized market analysis milega. Bina key ke bhi tool poora kaam karta hai.</div>
+  </div>
+</div>
+
+<footer>IncomeAIHub © 2026 · AI Digital Product Validator · Data stored locally in your browser</footer>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+$('aiToggle').addEventListener('change',e=>{$('apiKeyRow').style.display=e.target.checked?'block':'none';});
+
+let lastReport=null;
+
+function fmtINR(n){return '₹'+Number(n).toLocaleString('en-IN');}
+
+// ---------- RULE-BASED SCORING ENGINE ----------
+const categoryWeights = {
+  "eBook / Guide": {demand:0.55, competition:0.35, monet:0.55},
+  "Online Course": {demand:0.7, competition:0.4, monet:0.75},
+  "Notion Template": {demand:0.65, competition:0.45, monet:0.5},
+  "Canva Template": {demand:0.6, competition:0.3, monet:0.45},
+  "SaaS Tool / Web App": {demand:0.75, competition:0.3, monet:0.85},
+  "Mobile App": {demand:0.65, competition:0.35, monet:0.7},
+  "Chrome Extension": {demand:0.55, competition:0.5, monet:0.4},
+  "Stock Photos / Graphics / UI Kit": {demand:0.5, competition:0.4, monet:0.45},
+  "Print-on-Demand": {demand:0.5, competition:0.3, monet:0.4},
+  "Digital Planner / Journal": {demand:0.6, competition:0.35, monet:0.45},
+  "AI Prompt Pack": {demand:0.45, competition:0.25, monet:0.35},
+  "Other": {demand:0.5, competition:0.5, monet:0.5}
+};
+
+function ruleBasedAnalysis(data){
+  const w = categoryWeights[data.category] || categoryWeights["Other"];
+  let demand = w.demand*100;
+  let competition = 100 - (w.competition*100); // higher = less crowded
+  let pricing = 60;
+  let monet = w.monet*100;
+  let uniqueness = 40;
+
+  // Problem clarity boosts demand
+  const probLen = data.problem.trim().length;
+  if(probLen>120) demand += 15; else if(probLen>50) demand += 8; else if(probLen<15) demand -= 15;
+
+  // Unique angle boosts uniqueness + monetization
+  const uniqLen = data.unique.trim().length;
+  if(uniqLen>100){uniqueness += 40; monet += 10;}
+  else if(uniqLen>40){uniqueness += 22; monet += 5;}
+  else if(uniqLen<10){uniqueness -= 10;}
+
+  // Price sanity check vs category norms
+  const priceNorms = {
+    "eBook / Guide":[99,999], "Online Course":[499,4999], "Notion Template":[199,999],
+    "Canva Template":[99,699], "SaaS Tool / Web App":[299,2999], "Mobile App":[0,999],
+    "Chrome Extension":[0,499], "Stock Photos / Graphics / UI Kit":[199,1499],
+    "Print-on-Demand":[299,1999], "Digital Planner / Journal":[99,599],
+    "AI Prompt Pack":[49,499], "Other":[99,1999]
+  };
+  const [lo,hi] = priceNorms[data.category] || [99,999];
+  if(data.price < lo*0.4){pricing -= 20; monet -= 10;}
+  else if(data.price > hi*2){pricing -= 25;}
+  else if(data.price>=lo && data.price<=hi){pricing += 25;}
+  else{pricing += 5;}
+
+  // Audience specificity
+  const aud = data.audience.trim();
+  if(aud.length>25) demand += 10;
+  else if(aud.length<5) demand -= 12;
+
+  // Reach factor
+  if(data.reach >= 10000){monet += 15; demand += 8;}
+  else if(data.reach >= 1000){monet += 8; demand += 4;}
+  else if(data.reach>0 && data.reach<200){monet -= 8;}
+
+  demand=Math.max(5,Math.min(97,demand));
+  competition=Math.max(5,Math.min(95,competition));
+  pricing=Math.max(5,Math.min(97,pricing));
+  monet=Math.max(5,Math.min(97,monet));
+  uniqueness=Math.max(5,Math.min(97,uniqueness));
+
+  const overall = Math.round(demand*0.28 + competition*0.18 + pricing*0.2 + monet*0.2 + uniqueness*0.14);
+
+  const tips=[];
+  if(probLen<50) tips.push("Problem statement ko aur specific likho — exact pain point clearly define karo jise product solve karta hai.");
+  if(uniqLen<40) tips.push("Unique angle weak hai. Batao ki tumhara product competitors se alag kaise hai — feature, pricing, ya niche focus.");
+  if(aud.length<15) tips.push("Target audience ko narrow down karo. 'Freelancers' ki jagah 'Indian freelance graphic designers on Fiverr' jaisa specific segment choose karo.");
+  if(data.price<lo*0.4 || data.price>hi*2) tips.push(`Pricing category norms se bahar hai. Is category ke liye typical range ${fmtINR(lo)}–${fmtINR(hi)} hota hai.`);
+  if(data.reach<200) tips.push("Launch se pehle audience build karo — free content ya waitlist se kam se kam 500-1000 interested logo ka list banao.");
+  if(monet<40) tips.push("Monetization potential low hai. Upsell/bundle option ya recurring pricing model consider karo.");
+  if(competition<40) tips.push("Yeh category kaafi competitive hai — ek tight niche choose karo jaha kam players hain.");
+  if(tips.length===0) tips.push("Solid foundation hai! Ab ek landing page bana kar pre-launch waitlist build karo aur pehle 10 buyers se feedback lo.");
+
+  const gapMap = {
+    "eBook / Guide":["Regional language version","Interactive worksheets","Community access add-on"],
+    "Online Course":["Hindi subtitles","1:1 doubt sessions","Certificate + LinkedIn badge"],
+    "Notion Template":["Video walkthrough","GST/India-specific fields","Mobile-optimized version"],
+    "Canva Template":["Bulk pack bundling","Editable brand kit","Seasonal/festival variants"],
+    "SaaS Tool / Web App":["UPI/Razorpay integration","WhatsApp notifications","Free tier for lead gen"],
+    "Mobile App":["Offline mode","Regional language support","Widget/quick-access feature"],
+    "Chrome Extension":["Cross-browser support","Team/agency plan","Keyboard shortcuts"],
+    "Stock Photos / Graphics / UI Kit":["India-specific imagery","Figma + Canva dual format","Commercial license clarity"],
+    "Print-on-Demand":["India-based fast shipping","Custom personalization","Festival/occasion themes"],
+    "Digital Planner / Journal":["GoodNotes/Notability compatibility","Hindi calendar/festivals","Habit tracker add-on"],
+    "AI Prompt Pack":["Niche-specific packs (legal, medical)","Video tutorial included","Regular prompt updates"],
+    "Other":["Localization for India","Community support","Flexible pricing tiers"]
+  };
+  const gaps = gapMap[data.category] || gapMap["Other"];
+
+  return {demand,competition,pricing,monet,uniqueness,overall,tips,gaps};
+}
+
+async function claudeAnalysis(data, apiKey){
+  // Placeholder structure for future direct API wiring; currently falls back to rule engine
+  return ruleBasedAnalysis(data);
+}
+
+function verdictInfo(score){
+  if(score>=70) return {label:"✅ STRONG POTENTIAL",cls:"v-strong"};
+  if(score>=40) return {label:"⚠️ MODERATE POTENTIAL",cls:"v-moderate"};
+  return {label:"❌ HIGH RISK",cls:"v-risk"};
+}
+
+async function validateProduct(){
+  const data = {
+    name: $('prodName').value.trim() || "Untitled Product",
+    category: $('category').value,
+    price: Number($('price').value) || 0,
+    audience: $('audience').value.trim(),
+    reach: Number($('reach').value) || 0,
+    problem: $('problem').value.trim(),
+    unique: $('unique').value.trim()
+  };
+  if(!data.problem){ alert("Kripya problem statement bharein — yeh validation ke liye zaroori hai."); return; }
+
+  $('loader').classList.add('active');
+  $('resultsCard').style.display='none';
+
+  let result;
+  if($('aiToggle').checked && $('apiKey').value.trim()){
+    result = await claudeAnalysis(data, $('apiKey').value.trim());
+  } else {
+    result = ruleBasedAnalysis(data);
+  }
+
+  setTimeout(()=>{
+    renderResults(data, result);
+    $('loader').classList.remove('active');
+    $('resultsCard').style.display='block';
+    $('resultsCard').scrollIntoView({behavior:'smooth',block:'start'});
+  }, 900);
+}
+
+function renderResults(data, r){
+  lastReport = {data, r, date: new Date().toISOString()};
+  const v = verdictInfo(r.overall);
+  $('verdictBadge').textContent = v.label;
+  $('verdictBadge').className = 'verdict-badge '+v.cls;
+  $('scoreBig').textContent = r.overall;
+
+  const bars = [
+    {label:"Market Demand", val:r.demand, color:"var(--cyan)"},
+    {label:"Low Competition Score", val:r.competition, color:"var(--purple)"},
+    {label:"Pricing Viability", val:r.pricing, color:"var(--green)"},
+    {label:"Monetization Potential", val:r.monet, color:"var(--pink)"},
+    {label:"Uniqueness Score", val:r.uniqueness, color:"var(--cyan)"}
+  ];
+  $('barsWrap').innerHTML = bars.map(b=>`
+    <div class="bar-item">
+      <div class="bar-label"><span>${b.label}</span><span>${Math.round(b.val)}/100</span></div>
+      <div class="bar-track"><div class="bar-fill" style="width:${b.val}%;background:${b.color};color:${b.color};"></div></div>
+    </div>`).join('');
+
+  const estBuyers = Math.max(1, Math.round(data.reach * (r.overall/100) * 0.02));
+  const estRevenue = estBuyers * data.price;
+
+  $('statsGrid').innerHTML = `
+    <div class="stat-box"><div class="val">${estBuyers}</div><div class="lbl">Est. First-Month Buyers</div></div>
+    <div class="stat-box"><div class="val">${fmtINR(estRevenue)}</div><div class="lbl">Est. First-Month Revenue</div></div>
+    <div class="stat-box"><div class="val">${fmtINR(data.price)}</div><div class="lbl">Price Point Used</div></div>
+  `;
+
+  $('tipsList').innerHTML = r.tips.map(t=>`<li>${t}</li>`).join('');
+  $('gapTags').innerHTML = r.gaps.map(g=>`<span class="gap-tag">💡 ${g}</span>`).join('');
+}
+
+function copyReport(){
+  if(!lastReport) return;
+  const {data,r} = lastReport;
+  const v = verdictInfo(r.overall);
+  const text = `AI DIGITAL PRODUCT VALIDATOR REPORT
+Product: ${data.name}
+Category: ${data.category}
+Price: ${fmtINR(data.price)}
+Verdict: ${v.label} (Score: ${r.overall}/100)
+
+Market Demand: ${Math.round(r.demand)}/100
+Competition (lower crowding=higher score): ${Math.round(r.competition)}/100
+Pricing Viability: ${Math.round(r.pricing)}/100
+Monetization Potential: ${Math.round(r.monet)}/100
+Uniqueness: ${Math.round(r.uniqueness)}/100
+
+Suggestions:
+${r.tips.map(t=>'- '+t).join('\\n')}
+
+Generated by IncomeAIHub AI Digital Product Validator`;
+  navigator.clipboard.writeText(text).then(()=>alert("Report copied to clipboard!"));
+}
+
+// ---------- HISTORY ----------
+function getHistory(){
+  try{ return JSON.parse(localStorage.getItem('pv_history')||'[]'); }catch(e){ return []; }
+}
+function saveToHistory(){
+  if(!lastReport){ alert("Pehle product validate karo."); return; }
+  const hist = getHistory();
+  hist.unshift(lastReport);
+  if(hist.length>25) hist.pop();
+  localStorage.setItem('pv_history', JSON.stringify(hist));
+  renderHistory();
+  alert("Saved to history!");
+}
+function renderHistory(){
+  const hist = getHistory();
+  const el = $('historyList');
+  if(hist.length===0){ el.innerHTML = '<div class="empty-hist">Abhi tak koi validation save nahi hui hai.</div>'; return; }
+  el.innerHTML = hist.map((h,i)=>{
+    const v = verdictInfo(h.r.overall);
+    const d = new Date(h.date);
+    const scoreColor = h.r.overall>=70?'var(--green)':h.r.overall>=40?'#ffc107':'var(--pink)';
+    return `<div class="history-item" onclick="loadHistory(${i})">
+      <div class="h-top">
+        <span class="h-name">${h.data.name}</span>
+        <span class="h-score" style="color:${scoreColor}">${h.r.overall}/100</span>
+      </div>
+      <div class="h-meta">${h.data.category} · ${fmtINR(h.data.price)} · ${d.toLocaleDateString('en-IN')} · ${v.label}</div>
+    </div>`;
+  }).join('');
+}
+function loadHistory(i){
+  const hist = getHistory();
+  const h = hist[i];
+  if(!h) return;
+  $('prodName').value=h.data.name; $('category').value=h.data.category;
+  $('price').value=h.data.price; $('audience').value=h.data.audience;
+  $('reach').value=h.data.reach; $('problem').value=h.data.problem; $('unique').value=h.data.unique;
+  renderResults(h.data, h.r);
+  $('resultsCard').style.display='block';
+  $('resultsCard').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+renderHistory();
+</script>
+</body>
+</html>
